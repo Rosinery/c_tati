@@ -1,0 +1,429 @@
+* {
+    box-sizing: border-box; /* Mantém padding e bordas dentro da largura definida */
+}
+
+html, body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #030303;
+    min-height: 100vh; /* Garante altura mínima para cobrir a tela */
+
+    max-width: 100vw; /* Evita que a largura ultrapasse a tela */
+    overflow-x: hidden; /* Remove a rolagem horizontal */
+
+    width: 100%;
+}
+
+/* 📌 CARROSSEL - Imagens pequenas, mas preenchendo os espaços laterais */
+.swiper-container {
+    width: 100%; /* Ajusta para telas menores */
+    max-width: 1200%; /* Limita a largura */
+    height: 40vh; /* Reduz altura do carrossel */
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    overflow: hidden; /* Evita que o conteúdo vaze */
+}
+
+.carousel-title {
+    text-align: center;
+    font-size: 18px;
+    color: #f2b361;
+    font-weight: bold;
+    padding: 15px 10px;
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro semi-transparente */
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 10px auto; /* Espaço abaixo do título */
+    border-radius: 10px 10px 0 0;
+    margin-top: 20px;
+    font-weight: bolder;
+}
+
+.carousel-title h1 {
+    font-size: 22px;
+    margin: 0;
+    color: #f2b361; /* Cor do texto */
+    font-weight: bolder;
+}
+
+.back-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #f2b361;
+    color: black;
+    
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bolder;
+    z-index: 10;
+
+    max-width: 100vw; /* Evita que a largura ultrapasse a tela */
+    overflow-x: hidden; /* Remove a rolagem horizontal */
+    margin: 0;
+    padding: 0;
+}
+
+.back-button:hover {
+    background-color: #e0a349;
+}
+
+
+.swiper-wrapper{
+    margin-top: 100px;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    width: 100%; /* Mantém imagens pequenas */
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer; /* Permite clicar para ampliar */
+    max-width: 100%;
+    height: auto;
+    max-height: 300px; /* Define uma altura máxima para evitar imagens gigantes */
+}
+
+/* 📌 DESCRIÇÃO FORA DO CARROSSEL */
+.descricao {
+    max-width: 800px;
+    margin: 20px auto;
+    background: #f2b361;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #f2b361;
+    text-align: center;
+    margin-top: 420px;
+}
+
+.descricao h2 {
+    font-size: 24px;
+    color: black;;
+    margin-bottom: 10px;
+}
+
+.descricao p {
+    font-size: 16px;
+    color: black;
+    margin-top: 10px;
+    text-align: left;
+}
+
+/* 📌 Ajuste das imagens */
+.multi-image {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap; /* Ajusta em telas menores */
+    justify-content: center;
+
+    max-width: 100%; /* Mantém a imagem dentro do container */
+    height: auto; /* Mantém a proporção */
+    display: block; /* Remove espaços extras ao redor da imagem */
+}
+
+.multi-image img {
+    width: 100%; /* Mantém três imagens por linha */
+    /* height: 200px; Reduz altura */
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer; /* Clique para ampliar */
+
+    max-width: 100%; /* Mantém a imagem dentro do container */
+    height: auto; /* Mantém a proporção */
+    display: block; /* Remove espaços extras ao redor da imagem */
+
+    max-height: 200px; /* Define um limite de altura */
+}
+
+.image-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 1000; /* 🔥 Garante que fique acima do carrossel */
+    flex-direction: column;
+}
+
+/* 📌 EFEITO DE ZOOM - Tela cheia */
+
+
+.image-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 0 15px  #f2b361;
+}
+
+/* 📌 BOTÃO DE FECHAR */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    background: #f2b361;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bolder;
+    z-index: 1001; /* 🔥 Sempre acima da imagem */
+}
+
+.close-btn:hover{
+    background-color: #e0a349;
+}
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background:  #f2b361;
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 1001;
+}
+
+.prev-btn {
+    left: 20px;
+}
+
+.next-btn {
+    right: 20px;
+}
+
+/* 📌 Mostra o zoom quando ativado */
+.image-overlay.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* 📌 Ajuste no carrossel para ficar mais à esquerda */
+.swiper-container {
+    width: 100%;  /* Usa toda a largura da tela */
+    max-width: 1200px; /* Limita em telas grandes */
+    height: 50vh; /* Mantém altura proporcional */
+    margin: 20px auto; /* Centraliza */
+}
+
+
+
+/* 📌 Botões do carrossel */
+.swiper-button-prev,
+.swiper-button-next {
+    color: #f2b361;
+    font-size: 20px;
+    z-index: 10;
+}
+
+/* 📌 Informações */
+.info {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.info span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+}
+
+.whatsapp-button {
+    position: absolute;
+    right: 20px;
+    background-color: #25D366;
+    color: black;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+/* 📌 RODAPÉ FIXO */
+footer {
+    background-color: #222;
+    color: #f2b361;
+    padding: 10px;
+    width: 100%;
+    margin-top: auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    font-size: 15px; /* Tamanho de fonte menor */
+}
+
+/* 📌 Estrutura do rodapé */
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5px;    
+}
+
+.footer-left {
+    text-align: left;
+    font-size: 15px; /* Tamanho de fonte menor */
+}
+
+.footer-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.profile-text {
+    text-align: right;
+    margin-right: 5px;
+    font-size: 15px; /* Tamanho de fonte menor */
+
+}
+
+.profile-pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+}
+
+.footer-links {
+    margin: 5px;
+    text-align: left;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links ul li {
+    margin: 3px 0;
+}
+
+.footer-links ul li a {
+    text-decoration: none;
+    color: #f2b361;
+    font-size: 15px;
+}
+
+.footer-bottom {
+    text-align: center;
+    width: 100%;
+    padding-top: 10px;
+}
+
+/* 📌 RESPONSIVIDADE */
+@media (max-width: 768px) {
+    .swiper-container {
+        width: 95%; /* Ajusta para telas menores */
+        height: 35vh; /* Reduz altura */
+    }
+
+    .swiper-slide img {
+        max-height: 180px; /* Reduz ainda mais em telas pequenas */
+    }
+
+    .multi-image img {
+        max-height: 150px;
+    }
+    
+    .carousel-title h1 {
+        font-size: 16px;
+    }
+    .carousel-title {
+        padding: 10px;
+    }
+
+    .back-button {
+        font-size: 14px;
+        padding: 8px 12px;
+        top: 100px; /* Ajusta a posição no topo */
+        right: 5px; /* Mantém afastado da borda */
+    }
+
+    .multi-image img {
+        width: 45%; /* 2 imagens por linha */
+        height: 130px;
+    }
+
+    .image-overlay img {
+        max-width: 95%;
+        max-height: 80%;
+    }
+
+    .nav-btn {
+        font-size: 20px;
+        padding: 8px 12px;
+    }
+
+    .prev-btn {
+        left: 5px; /* Reduz distância da borda */
+    }
+
+    .next-btn {
+        right: 5px; /* Reduz distância da borda */
+    }
+   
+    .close-btn {
+        top: 10px;
+        right: 15px;
+        font-size: 16px;
+        padding: 8px 12px;
+    }
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-right {
+        justify-content: center;
+        margin-top: 5px;
+    }
+
+    .profile-pic {
+        width: 75px;
+        height: 75px;
+    }
+
+    .profile-text {
+        text-align: center;
+        margin: 0;
+    }
+}
+
